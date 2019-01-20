@@ -1,0 +1,16 @@
+textarea{
+    resize: none;
+}
+
+.middle{
+    margin: auto;
+}
+
+strong{
+    width: 100%;
+}
+
+/* .container .bottom-footer {
+    position: relative;
+    bottom: 0;
+} */
