@@ -1,0 +1,60 @@
+<style>
+  h5{
+    display: inline-block;
+    min-width: 100px;
+  }
+</style>
+
+<h1>Profile</h1>
+<br>
+
+  <div class="row">
+    <div class="col-md-1 h5 mr-2">Name </div>
+    <div class="col-md-4"> :  <%= profile.name%></div>
+  </div>
+  <div class="row">
+    <div class="col-md-1 h5 mr-2">Username </div>
+    <div class="col-md-4"> :  <%= profile.username%></div>
+  </div>
+  <div class="row">
+    <div class="col-md-1 h5 mr-2">Email </div>
+    <div class="col-md-4"> :  <%= profile.email%></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#exampleModalCentered">
+        Change Password
+      </button>
+    </div>
+  </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCentered" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenteredLabel">Change Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="<%=url%>" method="post">
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="confirm">Confirm Password</label>
+              <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

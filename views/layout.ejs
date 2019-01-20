@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Knowledgebase</title>
+  <link rel="stylesheet" href="/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/public/css/mainstyle.css">
+  <%- style%>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Knowledgebase</a>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li id="home" class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li id="addArticle" class="nav-item">
+            <a class="nav-link" href="/articles/add">Add Artice</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Option</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Item 1</a>
+              <a class="dropdown-item" href="#">Item 2</a>
+              <a class="dropdown-item" href="#">Item 3</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <%if (client) {%>
+            <li id="addArticle" class="nav-item mr-4">
+              <a class="nav-link" href="/user/<%= client._id%>"> Welcome, <%=client.name%></a>
+            </li>
+            <li id="addArticle" class="nav-item">
+              <a class="btn btn-light" href="/user/logout">Logout</a>
+            </li>
+          <%} else {%>
+            <li class="nav-item mr-3" id="login">
+              <a class="nav-link" href="/user/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-light" href="/user/register" id='register'>Sign Up</a>
+            </li>
+          <%}%>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <br>
+  <div class="container">
+    <%- include alert -%>
+    <%- body%>
+    <br>
+    <div class="bottom-footer">
+      <hr>
+      Copyright &copysr; 2019
+    </div>
+  </div>
+
+  <script src="/reload/reload.js"></script>
+  <script src="/public/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/public/bower_components/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <%- script%>
+</body>
+
+</html>

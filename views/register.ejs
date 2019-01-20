@@ -1,0 +1,26 @@
+<%var regis = ['Name', 'Email', 'Username', 'Password', 'Confirm']%>
+
+<h1>Register New Account</h1>
+<br>
+
+<form action="<%=url%>" method="POST">
+    <%for (let [index, i] of regis.entries()) {%>
+        <% let x = i.toLowerCase(); let type = 'text'; %>
+        <%if(index === 4) i = 'Confirm Password'; %>
+        <%if(index > 2) type = 'password';%>
+        <div class="form-group row">
+            <label for="<%=x%>" class="col-sm-2 col-form-label"><%=i%></label>
+            <div class="col-sm-4">
+                <input type="<%=type%>" class="form-control" name="<%=x%>" placeholder="<%=i%>" autocomplete="off">
+            </div>
+        </div>
+    <%}%> <br>
+    <div class="col-sm-6" style="padding-left: 0%;">
+        <button type="submit" class="btn btn-primary btn-block" >Sign Up</button>
+    </div>
+</form>
+
+<script>
+    $('li.active').removeClass('active');
+    $('a#register').removeClass('btn-light').addClass('btn-dark');
+</script>

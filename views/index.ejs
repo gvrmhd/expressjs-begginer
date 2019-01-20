@@ -1,0 +1,9 @@
+
+<h1><%=title%></h1>
+<br>
+
+<ul class="list-group">
+	<%for(i of articles) {%>
+		<a href="/articles/<%=i._id%>" class="list-group-item list-group-item-action"><%=i.title%></a>
+	<%}%>
+</ul>

@@ -1,0 +1,10 @@
+<h1><%=article.title%></h1>
+<h5>Written By <%=author%></h5>
+<br>
+<p><%=article.body%></p>
+<br>
+<%if (client){%>
+<a href="/articles/edit/<%=article._id%>" class="btn btn-info">Edit</a>
+<a href="#" class="btn btn-danger delete-data" data-id="<%=article._id%>">Delete</a>
+<%}%>
+<script src="/public/js/main.js"></script>
