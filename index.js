@@ -4,7 +4,7 @@ const expressLayouts = require("express-ejs-layouts");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const flash = require('express-flash-2');
+const flash = require('express-flash-messages');
 const validator = require('express-validator');
 const passport = require('passport');
 const reload = require('reload');
@@ -16,7 +16,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//Serve public path
+// Serve public path
 app.use("/public", express.static(path.join(__dirname, "public"))); 
 
 // Use cookie-parser with secret from session
@@ -31,6 +31,10 @@ app.use(session({
 
 // Use express-flash middleware
 app.use(flash());
+app.use((req, res, next) => {
+  res.locals.flash = res.locals.getMessages();
+  next();
+});
 
 // express-validator Middleware
 app.use(validator());

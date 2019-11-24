@@ -36,12 +36,12 @@ router.route('/add')
           if (err) {
             res.send(err);
           } else {
-            res.flash('success', 'Articles Added');
+            req.flash('success', 'Articles Added');
             res.redirect("/");
           }
         });     
       } else {
-        res.flash('error', 'You have to Log In before Adding Articles !');
+        req.flash('error', 'You have to Log In before Adding Articles !');
         res.redirect(req.originalUrl);
       }
     }
@@ -73,7 +73,7 @@ router
   .delete((req, res) => {
     const query = { _id: req.params.id };
     Article.deleteOne(query).exec(err => {
-      res.flash("success", "Article Deleted");
+      req.flash("success", "Article Deleted");
       res.send();
     });
   });
@@ -104,7 +104,7 @@ router.route('/edit/:id')
       if (err) {
         res.json(err);
       } else {
-        res.flash('success', 'Artcile Edited');
+        req.flash('success', 'Artcile Edited');
         res.redirect('/');
       }
     });

@@ -46,7 +46,7 @@ router.route('/register')
 						if (err) {
 							console.error(err);
 						} else {
-							res.flash('success', "You're registered, now you can Log In !");
+							req.flash('success', "You're registered, now you can Log In !");
 							res.redirect('/user/login');
 						}
 					});
@@ -75,17 +75,17 @@ router.route('/login')
 router.route('/logout')
 	.get((req, res) => {
 		req.logout();
-		res.flash('success', 'You are logged out');
+		req.flash('success', 'You are logged out');
 		res.redirect('/');
 	});
 
 router.route('/:id')
 	.get((req, res) => {
 		if(!req.user){
-			res.flash('error', 'Not Logged In')
+			req.flash('error', 'Not Logged In')
 			res.redirect('/');
 		} else if(req.params.id != req.user._id){
-			res.flash('error', 'Invalid User ID')
+			req.flash('error', 'Invalid User ID')
 			res.redirect('/');
 		} else {
 			const query = { _id: req.params.id };
@@ -129,7 +129,7 @@ router.route('/:id')
 						if (err) {
 							throw err;
 						}
-						res.flash('success', 'Password changed !');
+						req.flash('success', 'Password changed !');
 						res.redirect(req.originalUrl);
 					});
 			});
